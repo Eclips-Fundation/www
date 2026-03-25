@@ -24,7 +24,6 @@
             color: #EFF3F8;
             line-height: 1.5;
             scroll-behavior: smooth;
-            overflow-x: hidden;
         }
 
         ::-webkit-scrollbar {
@@ -41,34 +40,31 @@
         .container {
             max-width: 1280px;
             margin: 0 auto;
-            padding: 0 1.25rem;
+            padding: 0 1.5rem;
         }
 
-        /* Header optimizado móvil */
+        /* Header - idéntico a index.html */
         .header {
             padding: 1rem 0;
             border-bottom: 1px solid rgba(249, 115, 22, 0.2);
-            margin-bottom: 1.5rem;
             position: sticky;
             top: 0;
-            background: rgba(10, 12, 16, 0.95);
-            backdrop-filter: blur(10px);
-            z-index: 100;
+            background: rgba(10, 12, 16, 0.98);
+            backdrop-filter: blur(12px);
+            z-index: 1000;
         }
 
         .nav {
             display: flex;
             justify-content: space-between;
             align-items: center;
-            flex-wrap: wrap;
-            gap: 0.75rem;
         }
 
         .logo a {
-            font-size: 1.35rem;
+            font-size: 1.4rem;
             font-weight: 700;
             text-decoration: none;
-            color: #EFF3F8;
+            color: #fff;
             letter-spacing: -0.3px;
         }
         
@@ -80,204 +76,202 @@
             font-weight: 800;
         }
 
-        .back-link {
-            display: inline-flex;
-            align-items: center;
-            gap: 0.5rem;
+        .menu-toggle {
+            display: none;
+            background: none;
+            border: none;
             color: #F97316;
-            text-decoration: none;
-            font-weight: 500;
-            font-size: 0.9rem;
-            transition: 0.2s;
-            padding: 0.4rem 0.9rem;
-            border-radius: 40px;
-            background: rgba(249, 115, 22, 0.1);
+            font-size: 1.6rem;
             cursor: pointer;
         }
 
-        .back-link:active {
-            transform: scale(0.96);
-            background: rgba(249, 115, 22, 0.2);
+        .nav-links {
+            display: flex;
+            align-items: center;
+            gap: 1.8rem;
         }
 
-        h1 {
-            font-size: 1.9rem;
+        .nav-links a {
+            color: #B9C1D1;
+            text-decoration: none;
+            font-size: 0.85rem;
+            font-weight: 500;
+            transition: color 0.2s;
+        }
+
+        .nav-links a:hover {
+            color: #F97316;
+        }
+
+        /* Page Header */
+        .page-header {
+            margin: 2rem 0 2rem;
+        }
+
+        .page-header h1 {
+            font-size: 2rem;
             font-weight: 700;
             margin-bottom: 0.5rem;
-            line-height: 1.3;
-        }
-
-        .page-header {
-            margin-bottom: 2rem;
         }
 
         .page-header p {
             color: #A0A8B8;
-            font-size: 0.95rem;
-            line-height: 1.4;
+            font-size: 0.9rem;
         }
 
-        /* Badges responsive */
+        /* Tabla moderna */
+        .versions-table-container {
+            background: #12141C;
+            border-radius: 20px;
+            border: 1px solid #252A33;
+            overflow-x: auto;
+            margin-bottom: 2rem;
+        }
+
+        .versions-table {
+            width: 100%;
+            border-collapse: collapse;
+            min-width: 680px;
+        }
+
+        .versions-table th {
+            text-align: left;
+            padding: 1rem 1.2rem;
+            background: #0F1117;
+            color: #8B95A8;
+            font-weight: 500;
+            font-size: 0.75rem;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+            border-bottom: 1px solid #252A33;
+        }
+
+        .versions-table td {
+            padding: 1rem 1.2rem;
+            border-bottom: 1px solid #1E2129;
+            font-size: 0.85rem;
+            vertical-align: middle;
+        }
+
+        .versions-table tr:last-child td {
+            border-bottom: none;
+        }
+
+        .versions-table tr:hover td {
+            background: rgba(249, 115, 22, 0.05);
+        }
+
+        /* Columna versión */
+        .version-cell {
+            font-weight: 700;
+            font-size: 1rem;
+            color: #FFB347;
+        }
+
+        /* Badges */
         .status-badge, .support-badge {
             display: inline-flex;
             align-items: center;
-            gap: 0.35rem;
-            padding: 0.2rem 0.75rem;
+            gap: 0.4rem;
+            padding: 0.25rem 0.8rem;
             border-radius: 40px;
             font-size: 0.7rem;
             font-weight: 600;
-            letter-spacing: 0.2px;
             white-space: nowrap;
         }
 
         .status-release {
-            background: rgba(34, 197, 94, 0.2);
+            background: rgba(34, 197, 94, 0.15);
             color: #4ade80;
-            border: 1px solid rgba(74, 222, 128, 0.3);
+            border: 1px solid rgba(74, 222, 128, 0.25);
         }
         .status-preview {
-            background: rgba(249, 115, 22, 0.2);
+            background: rgba(249, 115, 22, 0.15);
             color: #F97316;
-            border: 1px solid rgba(249, 115, 22, 0.3);
+            border: 1px solid rgba(249, 115, 22, 0.25);
         }
         .status-beta {
-            background: rgba(168, 85, 247, 0.2);
+            background: rgba(168, 85, 247, 0.15);
             color: #c084fc;
-            border: 1px solid rgba(192, 132, 252, 0.3);
+            border: 1px solid rgba(192, 132, 252, 0.25);
         }
         .status-alpha {
-            background: rgba(239, 68, 68, 0.2);
+            background: rgba(239, 68, 68, 0.15);
             color: #f87171;
-            border: 1px solid rgba(248, 113, 113, 0.3);
+            border: 1px solid rgba(248, 113, 113, 0.25);
         }
 
         .support-supported {
-            background: rgba(34, 197, 94, 0.15);
+            background: rgba(34, 197, 94, 0.12);
             color: #4ade80;
-            border: 1px solid rgba(74, 222, 128, 0.3);
+            border: 1px solid rgba(74, 222, 128, 0.2);
         }
         .support-missing_features {
-            background: rgba(249, 115, 22, 0.15);
+            background: rgba(249, 115, 22, 0.12);
             color: #F97316;
-            border: 1px solid rgba(249, 115, 22, 0.3);
+            border: 1px solid rgba(249, 115, 22, 0.2);
         }
         .support-deprecated {
-            background: rgba(245, 158, 11, 0.15);
+            background: rgba(245, 158, 11, 0.12);
             color: #fbbf24;
-            border: 1px solid rgba(245, 158, 11, 0.3);
+            border: 1px solid rgba(245, 158, 11, 0.2);
         }
         .support-not_supported {
-            background: rgba(239, 68, 68, 0.15);
+            background: rgba(239, 68, 68, 0.12);
             color: #f87171;
-            border: 1px solid rgba(248, 113, 113, 0.3);
+            border: 1px solid rgba(248, 113, 113, 0.2);
         }
 
-        /* Versions grid - optimizado móvil */
-        .versions-grid {
+        /* Meta información */
+        .meta-info {
             display: flex;
-            flex-direction: column;
-            gap: 1rem;
-            margin-bottom: 2rem;
-        }
-
-        .version-card {
-            background: #12141C;
-            border-radius: 20px;
-            padding: 1.2rem;
-            border: 1px solid #252A33;
-            transition: all 0.2s ease;
-            display: flex;
-            flex-direction: column;
-            gap: 1rem;
-        }
-
-        .version-card:active {
-            transform: scale(0.99);
-        }
-
-        .version-card.not-supported-card {
-            opacity: 0.7;
-            border-color: #DC2626;
-        }
-
-        .version-info {
-            display: flex;
-            flex-direction: column;
-            gap: 0.8rem;
-        }
-
-        .version-number {
-            font-size: 1.4rem;
-            font-weight: 700;
-            letter-spacing: -0.02em;
-            background: linear-gradient(135deg, #FFE6D5, #FFB347);
-            background-clip: text;
-            -webkit-background-clip: text;
-            color: transparent;
-        }
-
-        .badges-group {
-            display: flex;
-            flex-wrap: wrap;
-            gap: 0.5rem;
             align-items: center;
-        }
-
-        .version-meta {
-            display: flex;
-            flex-wrap: wrap;
-            gap: 0.75rem;
-            align-items: center;
-            font-size: 0.7rem;
+            gap: 1rem;
+            font-size: 0.75rem;
             color: #8B95A8;
         }
 
-        .version-meta i {
+        .meta-info i {
             color: #F97316;
             width: 14px;
         }
 
-        .download-btn {
+        /* Botón descarga */
+        .download-table-btn {
             display: inline-flex;
             align-items: center;
-            justify-content: center;
-            gap: 0.6rem;
-            padding: 0.7rem 1.2rem;
+            gap: 0.5rem;
+            padding: 0.45rem 1rem;
             background: linear-gradient(105deg, #F97316, #FF8C42);
-            border-radius: 60px;
+            border-radius: 40px;
             color: #0A0C10;
             font-weight: 600;
+            font-size: 0.75rem;
             text-decoration: none;
-            font-size: 0.9rem;
             transition: all 0.2s;
             border: none;
             cursor: pointer;
-            width: 100%;
         }
 
-        .download-btn:active {
-            transform: scale(0.97);
+        .download-table-btn:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 4px 12px rgba(249, 115, 22, 0.3);
         }
 
-        .download-btn.disabled-btn {
+        .download-table-btn.disabled-btn {
             background: #2A2E3A;
             color: #6A7287;
             cursor: not-allowed;
-            opacity: 0.6;
             pointer-events: none;
-        }
-
-        .support-tooltip {
-            position: relative;
-            cursor: help;
+            opacity: 0.6;
         }
 
         /* Loading & Empty states */
         .loading-state, .empty-state, .error-state {
             text-align: center;
-            padding: 3rem 1.5rem;
+            padding: 3rem;
             background: #12141C;
-            border-radius: 28px;
+            border-radius: 20px;
             border: 1px solid #252A33;
         }
 
@@ -295,7 +289,7 @@
             to { transform: rotate(360deg); }
         }
 
-        /* Footer móvil */
+        /* Footer - idéntico a index.html */
         .footer {
             border-top: 1px solid rgba(249, 115, 22, 0.2);
             padding: 1.5rem 0;
@@ -304,10 +298,27 @@
 
         .footer-content {
             display: flex;
-            flex-direction: column;
+            flex-wrap: wrap;
+            justify-content: space-between;
             align-items: center;
             gap: 1rem;
-            text-align: center;
+        }
+
+        .footer-links {
+            display: flex;
+            gap: 1.5rem;
+            flex-wrap: wrap;
+        }
+
+        .footer-links a {
+            color: #9a9aa4;
+            text-decoration: none;
+            font-size: 0.75rem;
+            transition: color 0.2s;
+        }
+
+        .footer-links a:hover {
+            color: #F97316;
         }
 
         .copyright {
@@ -315,143 +326,106 @@
             color: #7F8899;
         }
 
-        .footer-links {
-            display: flex;
-            gap: 1.2rem;
-            flex-wrap: wrap;
-            justify-content: center;
-        }
-
-        .footer-links a {
-            color: #B9C1D1;
-            text-decoration: none;
-            font-size: 0.75rem;
-        }
-
-        .retry-btn {
-            background: rgba(249, 115, 22, 0.2);
-            border: 1px solid #F97316;
-            color: #F97316;
-            margin-top: 1rem;
-        }
-
-        /* Mejoras táctiles */
-        button, .back-link, .download-btn {
-            touch-action: manipulation;
-        }
-
-        /* Tablet y desktop */
-        @media (min-width: 640px) {
+        /* Responsive */
+        @media (max-width: 780px) {
             .container {
-                padding: 0 1.8rem;
+                padding: 0 1rem;
             }
-            .version-card {
-                flex-direction: row;
-                align-items: center;
-                justify-content: space-between;
-                padding: 1.2rem 1.5rem;
+            .menu-toggle {
+                display: block;
             }
-            .version-info {
-                flex-direction: row;
-                align-items: center;
-                flex-wrap: wrap;
+            .nav {
+                position: relative;
+            }
+            .nav-links {
+                display: none;
+                flex-direction: column;
+                position: absolute;
+                top: 100%;
+                left: 0;
+                right: 0;
+                background: rgba(10, 12, 16, 0.98);
+                backdrop-filter: blur(12px);
+                padding: 1rem;
                 gap: 1rem;
-                flex: 2;
+                border-bottom: 1px solid rgba(249, 115, 22, 0.2);
+                z-index: 999;
             }
-            .version-number {
-                font-size: 1.5rem;
-                min-width: 100px;
+            .nav-links.show {
+                display: flex;
             }
-            .download-btn {
-                width: auto;
-                min-width: 150px;
-            }
-            .badges-group {
-                flex-wrap: nowrap;
-            }
-            .footer-content {
-                flex-direction: row;
-                justify-content: space-between;
-                text-align: left;
-            }
-            h1 {
-                font-size: 2.2rem;
-            }
-        }
-
-        @media (min-width: 1024px) {
-            .container {
-                padding: 0 2rem;
-            }
-            h1 {
-                font-size: 2.5rem;
-            }
-            .version-number {
+            .page-header h1 {
                 font-size: 1.6rem;
             }
+            .footer-content {
+                flex-direction: column;
+                text-align: center;
+            }
+            .meta-info {
+                flex-direction: column;
+                align-items: flex-start;
+                gap: 0.3rem;
+            }
         }
 
-        /* Ajustes extra para móviles muy pequeños */
         @media (max-width: 480px) {
-            .version-meta {
-                flex-direction: column;
-                align-items: flex-start;
-                gap: 0.4rem;
-            }
-            .badges-group {
-                flex-direction: column;
-                align-items: flex-start;
+            .page-header h1 {
+                font-size: 1.4rem;
             }
             .status-badge, .support-badge {
-                white-space: normal;
-                font-size: 0.65rem;
-            }
-            .logo a {
-                font-size: 1.2rem;
-            }
-            .back-link {
-                font-size: 0.8rem;
-                padding: 0.35rem 0.8rem;
+                font-size: 0.6rem;
+                padding: 0.2rem 0.6rem;
             }
         }
     </style>
 </head>
 <body>
 
-<div class="container">
-    <div class="header">
+<header class="header">
+    <div class="container">
         <div class="nav">
             <div class="logo">
-                <a href="#" id="logoHomeLink">Eclips <span class="gradient-chat">Chat</span></a>
+                <a href="index.html">Eclips <span class="gradient-chat">Chat</span></a>
             </div>
-            <div class="back-link" id="backToHome">
-                <i class="fas fa-arrow-left"></i> Volver
+            <button class="menu-toggle" id="menuToggle" aria-label="Menú">
+                <i class="fas fa-bars"></i>
+            </button>
+            <div class="nav-links" id="navLinks">
+                <a href="versions.html">Descargas</a>
+                <a href="#">Soporte</a>
+                <a href="privacy.html">Privacidad</a>
+                <a href="terms.html">Términos</a>
             </div>
         </div>
     </div>
+</header>
 
-    <div class="page-header">
-        <h1><i class="fas fa-download" style="color:#F97316; margin-right: 0.6rem; font-size: 1.8rem;"></i> Todas las versiones</h1>
-        <p>Descarga versiones de Eclips Chat. Cada versión tiene un nivel de soporte indicado con su respectivo icono.</p>
-    </div>
+<main>
+    <div class="container">
+        <div class="page-header">
+            <h1><i class="fas fa-download" style="color:#F97316; margin-right: 0.6rem;"></i> Versiones</h1>
+            <p>Descarga cualquier versión de Eclips Chat. Cada versión tiene un nivel de soporte indicado.</p>
+        </div>
 
-    <div id="versionsContainer">
-        <div class="loading-state">
-            <div class="spinner"></div>
-            <p>Cargando versiones...</p>
+        <div id="versionsContainer">
+            <div class="loading-state">
+                <div class="spinner"></div>
+                <p>Cargando versiones...</p>
+            </div>
         </div>
     </div>
-</div>
+</main>
 
 <footer class="footer">
     <div class="container">
         <div class="footer-content">
             <div class="copyright">
-                <i class="far fa-copyright"></i> 2025 Eclips Chat — Cifrado E2EE para Android
+                <i class="far fa-copyright"></i> 2025 Eclips Chat · Cifrado AES-256 · Claves por QR
             </div>
             <div class="footer-links">
-                <a href="#">Política de Privacidad</a>
-                <a href="#">Términos de Servicio</a>
+                <a href="privacy.html">Política de Privacidad</a>
+                <a href="terms.html">Términos de Servicio</a>
+                <a href="versions.html">Descargas</a>
                 <a href="#">Soporte</a>
             </div>
         </div>
@@ -459,6 +433,40 @@
 </footer>
 
 <script>
+    // ============================================================
+    // MENÚ HAMBURGUESA
+    // ============================================================
+    const menuToggle = document.getElementById('menuToggle');
+    const navLinks = document.getElementById('navLinks');
+    
+    if (menuToggle) {
+        menuToggle.addEventListener('click', () => {
+            navLinks.classList.toggle('show');
+            const icon = menuToggle.querySelector('i');
+            if (navLinks.classList.contains('show')) {
+                icon.classList.remove('fa-bars');
+                icon.classList.add('fa-times');
+            } else {
+                icon.classList.remove('fa-times');
+                icon.classList.add('fa-bars');
+            }
+        });
+    }
+    
+    document.querySelectorAll('.nav-links a').forEach(link => {
+        link.addEventListener('click', () => {
+            navLinks.classList.remove('show');
+            if (menuToggle) {
+                const icon = menuToggle.querySelector('i');
+                icon.classList.remove('fa-times');
+                icon.classList.add('fa-bars');
+            }
+        });
+    });
+
+    // ============================================================
+    // CARGA DE VERSIONES DESDE JSON
+    // ============================================================
     const VERSIONS_JSON_URL = './versions.json';
     
     function getStatusInfo(status) {
@@ -477,28 +485,28 @@
                 class: 'support-supported',
                 icon: 'fa-check-circle',
                 label: 'Soportado',
-                tooltip: 'Versión completamente soportada con todas las funcionalidades actuales.',
+                tooltip: 'Versión completamente soportada',
                 downloadable: true
             },
             missing_features: {
                 class: 'support-missing_features',
                 icon: 'fa-star-of-life',
-                label: 'Funcionalidades limitadas',
-                tooltip: 'Algunas funcionalidades no están disponibles comparado con versiones recientes.',
+                label: 'Limitado',
+                tooltip: 'Funcionalidades limitadas vs versiones recientes',
                 downloadable: true
             },
             deprecated: {
                 class: 'support-deprecated',
                 icon: 'fa-exclamation-triangle',
                 label: 'Obsoleto',
-                tooltip: 'Esta versión aún funciona pero puede romperse en el futuro. Sin soporte.',
+                tooltip: 'Puede romperse en el futuro. Sin soporte.',
                 downloadable: true
             },
             not_supported: {
                 class: 'support-not_supported',
                 icon: 'fa-times-circle',
                 label: 'No soportado',
-                tooltip: 'Versión no compatible. No se puede descargar.',
+                tooltip: 'Versión no compatible',
                 downloadable: false
             }
         };
@@ -531,7 +539,6 @@
         if (existingToast) existingToast.remove();
         
         const toast = document.createElement('div');
-        toast.className = 'custom-toast';
         toast.style.position = 'fixed';
         toast.style.bottom = '20px';
         toast.style.left = '50%';
@@ -539,47 +546,38 @@
         toast.style.backgroundColor = isError ? '#DC2626' : '#F97316';
         toast.style.color = '#0A0C10';
         toast.style.padding = '10px 20px';
-        toast.style.borderRadius = '50px';
+        toast.style.borderRadius = '40px';
         toast.style.fontWeight = '500';
-        toast.style.zIndex = '10000';
         toast.style.fontSize = '0.8rem';
+        toast.style.zIndex = '10000';
         toast.style.backdropFilter = 'blur(8px)';
-        toast.style.boxShadow = '0 4px 12px rgba(0,0,0,0.3)';
-        toast.style.fontFamily = 'Inter, sans-serif';
         toast.style.maxWidth = '85%';
         toast.style.textAlign = 'center';
         toast.innerText = message;
         document.body.appendChild(toast);
-        setTimeout(() => {
-            toast.style.opacity = '0';
-            setTimeout(() => toast.remove(), 400);
-        }, 2500);
+        setTimeout(() => toast.remove(), 2500);
     }
 
-    function showDownloadToast(version) {
-        showToast(`📲 Descargando Eclips Chat ${version}...`);
-    }
-
-    function goToHomePage() {
-        window.location.href = 'index.html';
-    }
-
-    function renderVersions(versions) {
+    function renderVersionsTable(versions) {
         const container = document.getElementById('versionsContainer');
+        
         if (!versions || versions.length === 0) {
             container.innerHTML = `
                 <div class="empty-state">
-                    <i class="fas fa-box-open" style="font-size: 2.5rem; color:#F97316; margin-bottom: 1rem; display: block;"></i>
-                    <h3 style="font-size: 1.3rem;">No hay versiones</h3>
-                    <p style="color: #A0A8B8; font-size: 0.85rem;">Pronto habrá versiones disponibles.</p>
-                    <button id="retryEmptyBtn" class="download-btn retry-btn" style="margin-top: 1rem; width: auto; padding: 0.6rem 1.2rem;"><i class="fas fa-sync-alt"></i> Reintentar</button>
+                    <i class="fas fa-box-open" style="font-size: 2.5rem; color:#F97316; margin-bottom: 1rem;"></i>
+                    <h3 style="font-size: 1.2rem;">No hay versiones</h3>
+                    <p style="color: #A0A8B8;">Pronto habrá versiones disponibles.</p>
+                    <button id="retryEmptyBtn" class="download-table-btn retry-btn" style="margin-top: 1rem; background: rgba(249,115,22,0.2); color:#F97316;">
+                        <i class="fas fa-sync-alt"></i> Reintentar
+                    </button>
                 </div>
             `;
             const retryBtn = document.getElementById('retryEmptyBtn');
-            if (retryBtn) retryBtn.addEventListener('click', () => loadVersionsFromServer());
+            if (retryBtn) retryBtn.addEventListener('click', () => loadVersions());
             return;
         }
 
+        // Ordenar: release primero, luego preview, beta, alpha
         const statusOrder = { release: 0, preview: 1, beta: 2, alpha: 3 };
         const sortedVersions = [...versions].sort((a, b) => {
             const orderDiff = statusOrder[a.status] - statusOrder[b.status];
@@ -587,55 +585,76 @@
             return b.version.localeCompare(a.version, undefined, { numeric: true });
         });
 
-        const versionsHtml = sortedVersions.map(v => {
+        const tableRows = sortedVersions.map(v => {
             const statusInfo = getStatusInfo(v.status);
-            const supportType = v.support_type || 'not_supported';
+            const supportType = v.support_type || 'supported';
             const supportInfo = getSupportInfo(supportType);
-            const formattedDate = v.release_date ? formatDate(v.release_date) : null;
-            const sizeDisplay = v.size_mb ? `${v.size_mb} MB` : '— MB';
+            const formattedDate = v.release_date ? formatDate(v.release_date) : '—';
+            const sizeDisplay = v.size_mb ? `${v.size_mb} MB` : '—';
             const versionDisplay = escapeHtml(v.version);
             const isDownloadable = supportInfo.downloadable && v.asset_url;
-            const cardClass = supportType === 'not_supported' ? 'not-supported-card' : '';
             
             return `
-                <div class="version-card ${cardClass}">
-                    <div class="version-info">
-                        <div class="version-number">${versionDisplay}</div>
-                        <div class="badges-group">
-                            <span class="status-badge ${statusInfo.class}">
-                                <i class="fas ${statusInfo.icon}"></i> ${statusInfo.label}
-                            </span>
-                            <span class="support-badge ${supportInfo.class} support-tooltip" title="${supportInfo.tooltip}">
-                                <i class="fas ${supportInfo.icon}"></i> ${supportInfo.label}
-                            </span>
-                        </div>
-                        <div class="version-meta">
-                            ${formattedDate ? `<span><i class="fas fa-calendar-alt"></i> ${formattedDate}</span>` : ''}
+                <tr>
+                    <td class="version-cell">${versionDisplay}</td>
+                    <td>
+                        <span class="status-badge ${statusInfo.class}">
+                            <i class="fas ${statusInfo.icon}"></i> ${statusInfo.label}
+                        </span>
+                    </td>
+                    <td>
+                        <span class="support-badge ${supportInfo.class}" title="${supportInfo.tooltip}">
+                            <i class="fas ${supportInfo.icon}"></i> ${supportInfo.label}
+                        </span>
+                    </td>
+                    <td>
+                        <div class="meta-info">
+                            <span><i class="fas fa-calendar-alt"></i> ${formattedDate}</span>
                             <span><i class="fas fa-database"></i> ${sizeDisplay}</span>
-                            <span><i class="fas fa-android"></i> Android 10+</span>
+                            <span><i class="fas fa-android"></i> 10+</span>
                         </div>
-                    </div>
-                    ${isDownloadable ? 
-                        `<button class="download-btn download-single" data-url="${escapeHtml(v.asset_url)}" data-version="${versionDisplay}">
-                            <i class="fas fa-download"></i> Descargar APK
-                        </button>` :
-                        `<button class="download-btn disabled-btn" disabled>
-                            <i class="fas fa-ban"></i> No disponible
-                        </button>`
-                    }
-                </div>
+                    </td>
+                    <td>
+                        ${isDownloadable ? 
+                            `<button class="download-table-btn" data-url="${escapeHtml(v.asset_url)}" data-version="${versionDisplay}">
+                                <i class="fas fa-download"></i> APK
+                            </button>` :
+                            `<button class="download-table-btn disabled-btn" disabled>
+                                <i class="fas fa-ban"></i> No disponible
+                            </button>`
+                        }
+                    </td>
+                </tr>
             `;
         }).join('');
 
-        container.innerHTML = `<div class="versions-grid">${versionsHtml}</div>`;
+        container.innerHTML = `
+            <div class="versions-table-container">
+                <table class="versions-table">
+                    <thead>
+                        <tr>
+                            <th>Versión</th>
+                            <th>Estado</th>
+                            <th>Soporte</th>
+                            <th>Información</th>
+                            <th></th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        ${tableRows}
+                    </tbody>
+                </table>
+            </div>
+        `;
 
-        document.querySelectorAll('.download-single').forEach(btn => {
+        // Event listeners para botones de descarga
+        document.querySelectorAll('.download-table-btn[data-url]').forEach(btn => {
             btn.addEventListener('click', (e) => {
                 e.preventDefault();
                 const url = btn.getAttribute('data-url');
                 const versionName = btn.getAttribute('data-version');
-                if (url && url !== '#' && (url.startsWith('http') || url.startsWith('https'))) {
-                    showDownloadToast(versionName);
+                if (url && (url.startsWith('http') || url.startsWith('https'))) {
+                    showToast(`📲 Descargando Eclips Chat ${versionName}`);
                     window.open(url, '_blank');
                 } else {
                     showToast('⚠️ Enlace no disponible', true);
@@ -644,7 +663,7 @@
         });
     }
 
-    async function loadVersionsFromServer() {
+    async function loadVersions() {
         const container = document.getElementById('versionsContainer');
         
         container.innerHTML = `
@@ -683,7 +702,7 @@
                     : 'supported'
             }));
             
-            renderVersions(validVersions);
+            renderVersionsTable(validVersions);
             
         } catch (error) {
             console.error('Error:', error);
@@ -692,88 +711,31 @@
                 <div class="error-state">
                     <i class="fas fa-exclamation-triangle" style="font-size: 2.5rem; color:#F97316; margin-bottom: 1rem;"></i>
                     <h3 style="font-size: 1.2rem;">Error al cargar</h3>
-                    <p style="color: #A0A8B8; font-size: 0.85rem; margin-top: 0.5rem;">
-                        No se pudo conectar con el servidor.
-                    </p>
-                    <button id="retryErrorBtn" class="download-btn retry-btn" style="margin-top: 1rem; width: auto; padding: 0.6rem 1.2rem;">
+                    <p style="color: #A0A8B8;">No se pudo conectar con el servidor.</p>
+                    <button id="retryErrorBtn" class="download-table-btn retry-btn" style="margin-top: 1rem; background: rgba(249,115,22,0.2); color:#F97316;">
                         <i class="fas fa-sync-alt"></i> Reintentar
                     </button>
                 </div>
             `;
             const retryBtn = document.getElementById('retryErrorBtn');
             if (retryBtn) {
-                retryBtn.addEventListener('click', () => loadVersionsFromServer());
+                retryBtn.addEventListener('click', () => loadVersions());
             }
         }
     }
 
-    document.addEventListener('DOMContentLoaded', () => {
-        loadVersionsFromServer();
-
-        const backBtn = document.getElementById('backToHome');
-        if (backBtn) {
-            backBtn.addEventListener('click', (e) => {
-                e.preventDefault();
-                goToHomePage();
-            });
-        }
-
-        const logoLink = document.getElementById('logoHomeLink');
-        if (logoLink) {
-            logoLink.addEventListener('click', (e) => {
-                e.preventDefault();
-                goToHomePage();
-            });
-        }
-
-        const footerLinks = document.querySelectorAll('.footer-links a');
-        footerLinks.forEach(link => {
+    // Footer links
+    document.querySelectorAll('.footer-links a').forEach(link => {
+        if (link.getAttribute('href') === '#') {
             link.addEventListener('click', (e) => {
                 e.preventDefault();
-                showToast(`🔐 ${link.innerText} — próximamente.`);
+                showToast('📄 Próximamente disponible');
             });
-        });
-    });
-</script>
-
-<!-- 
-    ============================================================
-    versions.json ejemplo:
-    [
-        {
-            "version": "3.2.0",
-            "status": "release",
-            "asset_url": "https://cdn.eclips.example/releases/eclips-chat-3.2.0.apk",
-            "release_date": "2025-02-28",
-            "size_mb": 28.4,
-            "support_type": "supported"
-        },
-        {
-            "version": "3.1.5",
-            "status": "release",
-            "asset_url": "https://cdn.eclips.example/releases/eclips-chat-3.1.5.apk",
-            "release_date": "2025-02-10",
-            "size_mb": 27.8,
-            "support_type": "missing_features"
-        },
-        {
-            "version": "3.0.2",
-            "status": "release",
-            "asset_url": "https://cdn.eclips.example/releases/eclips-chat-3.0.2.apk",
-            "release_date": "2025-01-15",
-            "size_mb": 26.5,
-            "support_type": "deprecated"
-        },
-        {
-            "version": "2.9.0",
-            "status": "release",
-            "asset_url": "https://cdn.eclips.example/releases/eclips-chat-2.9.0.apk",
-            "release_date": "2024-12-01",
-            "size_mb": 24.1,
-            "support_type": "not_supported"
         }
-    ]
-    ============================================================
--->
+    });
+
+    // Iniciar carga
+    loadVersions();
+</script>
 </body>
 </html>
