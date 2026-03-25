@@ -1,0 +1,439 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+    <title>Términos de Servicio · Eclips Chat</title>
+    <meta name="description" content="Términos de uso de Eclips Chat: cifrado E2EE, no guardamos IPs rutinariamente, solo si la ley lo exige o para proteger usuarios.">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:opsz,wght@14..32,300;14..32,400;14..32,500;14..32,600;14..32,700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            background: #0a0a0c;
+            color: #e4e4e7;
+            font-family: 'Inter', sans-serif;
+            line-height: 1.5;
+        }
+
+        .container {
+            max-width: 880px;
+            margin: 0 auto;
+            padding: 0 1.5rem;
+        }
+
+        .site-header {
+            padding: 1.2rem 0;
+            border-bottom: 1px solid rgba(255, 140, 66, 0.2);
+        }
+
+        .nav {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            flex-wrap: wrap;
+            gap: 1rem;
+        }
+
+        .logo {
+            font-weight: 700;
+            font-size: 1.4rem;
+            letter-spacing: -0.3px;
+        }
+
+        .logo a {
+            text-decoration: none;
+            color: #fff;
+        }
+
+        .logo span {
+            background: linear-gradient(130deg, #ff8c42, #f95a2c);
+            background-clip: text;
+            -webkit-background-clip: text;
+            color: transparent;
+        }
+
+        .back-link {
+            color: #ff8c42;
+            text-decoration: none;
+            font-size: 0.85rem;
+            display: inline-flex;
+            align-items: center;
+            gap: 0.4rem;
+            background: rgba(255, 140, 66, 0.08);
+            padding: 0.35rem 0.9rem;
+            border-radius: 40px;
+            transition: 0.2s;
+        }
+
+        .back-link:hover {
+            background: rgba(255, 140, 66, 0.18);
+        }
+
+        .terms-content {
+            padding: 2.5rem 0 3rem;
+        }
+
+        h1 {
+            font-size: 2rem;
+            font-weight: 700;
+            letter-spacing: -0.02em;
+            margin-bottom: 0.3rem;
+        }
+
+        .date {
+            font-size: 0.75rem;
+            color: #8a8a94;
+            margin-bottom: 2rem;
+            border-left: 2px solid #ff8c42;
+            padding-left: 0.8rem;
+        }
+
+        .highlight-call {
+            background: #121215;
+            border-radius: 1.2rem;
+            padding: 1.2rem 1.5rem;
+            margin: 1.8rem 0;
+            border: 1px solid #2a2a2e;
+        }
+
+        .highlight-call p {
+            font-size: 0.9rem;
+            color: #d4d4dc;
+        }
+
+        .section {
+            margin: 2rem 0;
+        }
+
+        .section h2 {
+            font-size: 1.3rem;
+            font-weight: 600;
+            margin-bottom: 0.8rem;
+            display: flex;
+            align-items: center;
+            gap: 0.6rem;
+        }
+
+        .section h2 i {
+            color: #ff8c42;
+            font-size: 1.2rem;
+        }
+
+        .section p {
+            color: #b0b0ba;
+            margin-bottom: 0.8rem;
+            font-size: 0.9rem;
+        }
+
+        .card-list {
+            background: #111113;
+            border-radius: 1rem;
+            padding: 1.2rem 1.5rem;
+            margin: 1rem 0;
+            border: 1px solid #232327;
+        }
+
+        .card-list ul {
+            list-style: none;
+            padding-left: 0;
+        }
+
+        .card-list li {
+            margin-bottom: 0.8rem;
+            display: flex;
+            gap: 0.7rem;
+            align-items: flex-start;
+            font-size: 0.9rem;
+            color: #c0c0ca;
+        }
+
+        .card-list li i {
+            color: #ff8c42;
+            margin-top: 0.15rem;
+            width: 1.1rem;
+        }
+
+        .badge-note {
+            background: rgba(255, 140, 66, 0.08);
+            border-left: 2px solid #ff8c42;
+            padding: 0.8rem 1rem;
+            border-radius: 0.8rem;
+            margin: 1rem 0;
+        }
+
+        hr {
+            border: none;
+            border-top: 1px solid #252529;
+            margin: 1.8rem 0;
+        }
+
+        .footer {
+            border-top: 1px solid #202024;
+            padding: 1.5rem 0;
+            margin-top: 1rem;
+            font-size: 0.7rem;
+            color: #6a6a74;
+            text-align: center;
+        }
+
+        .footer-links {
+            display: flex;
+            justify-content: center;
+            gap: 1.5rem;
+            margin-top: 0.5rem;
+            flex-wrap: wrap;
+        }
+
+        .footer-links a {
+            color: #9a9aa4;
+            text-decoration: none;
+            font-size: 0.7rem;
+        }
+
+        @media (max-width: 600px) {
+            .container {
+                padding: 0 1.2rem;
+            }
+            h1 {
+                font-size: 1.6rem;
+            }
+            .card-list {
+                padding: 1rem;
+            }
+        }
+    </style>
+</head>
+<body>
+
+<div class="site-header">
+    <div class="container">
+        <div class="nav">
+            <div class="logo">
+                <a href="index.html">Eclips <span>Chat</span></a>
+            </div>
+            <a href="index.html" class="back-link">
+                <i class="fas fa-arrow-left"></i> Volver
+            </a>
+        </div>
+    </div>
+</div>
+
+<div class="container">
+    <div class="terms-content">
+        <h1>Términos de Servicio</h1>
+        <div class="date">Última actualización: 25 de marzo de 2025</div>
+
+        <div class="highlight-call">
+            <p><strong>📄 En resumen:</strong> Eclips es mensajería cifrada con claves por QR. <strong>No guardamos IPs rutinariamente</strong>, pero podemos hacerlo si la ley nos obliga o para proteger a los usuarios en casos graves. No podemos leer tus mensajes. Vos sos responsable de lo que hacés.</p>
+        </div>
+
+        <!-- 1. Aceptación -->
+        <div class="section">
+            <h2><i class="fas fa-check-circle"></i> 1. Aceptación de los términos</h2>
+            <p>Al usar Eclips Chat, aceptás estos términos. Si no estás de acuerdo, no uses la aplicación. Así de simple. Usar el servicio implica que leíste esto y entendés que no somos tus abogados ni tus papás.</p>
+        </div>
+
+        <!-- 2. Descripción -->
+        <div class="section">
+            <h2><i class="fas fa-comment-dots"></i> 2. Qué es Eclips</h2>
+            <p>Eclips es una app de mensajería donde las conversaciones se cifran con AES-256, y las claves se comparten <strong>cara a cara por QR</strong>. El servidor solo reenvía mensajes cifrados. Ni nosotros ni Firebase podemos leer lo que decís. También podemos meter bots, almacenamiento temporal y cosas para que la experiencia no sea una piedra.</p>
+        </div>
+
+        <!-- 3. Requisitos de uso -->
+        <div class="section">
+            <h2><i class="fas fa-gavel"></i> 3. Reglas básicas</h2>
+            <div class="card-list">
+                <ul>
+                    <li><i class="fas fa-balance-scale"></i> Usá Eclips respetando las leyes de tu país (y las de España, porque servimos desde ahí).</li>
+                    <li><i class="fas fa-skull-crossbones"></i> Nada de acoso, amenazas, ni romperle las pelotas a otros usuarios.</li>
+                    <li><i class="fas fa-bug"></i> No intentes hackear el servidor, inyectar cosas raras o romper el cifrado (no vas a poder, pero igual no lo intentes).</li>
+                    <li><i class="fas fa-robot"></i> Los bots que hagas también son tu responsabilidad. Si tu bot spamea, la culpa es tuya.</li>
+                </ul>
+            </div>
+            <p>Si incumplís, podemos cerrarte la cuenta sin previo aviso. No hay segundas chances para la gente que jode adrede.</p>
+        </div>
+
+        <!-- 4. Cuentas -->
+        <div class="section">
+            <h2><i class="fas fa-id-card"></i> 4. Tu cuenta, tu responsabilidad</h2>
+            <p>No pedimos mail ni teléfono. Tu cuenta se basa en un identificador local. Si perdés el dispositivo, perdés las claves y los mensajes. No podemos recuperarlos. Es como perder la llave de tu casa: no podemos abrirla por vos.</p>
+            <div class="badge-note">
+                <i class="fas fa-shield-alt" style="color:#ff8c42; margin-right: 0.5rem;"></i>
+                <strong>La seguridad de tu cuenta depende de vos.</strong> Si alguien escanea tu QR sin que te des cuenta, puede leer tus mensajes. Cuidá tu teléfono como cuidás tu billetera.
+            </div>
+        </div>
+
+        <!-- 5. Mensajes y cifrado (corazón del asunto) -->
+        <div class="section">
+            <h2><i class="fas fa-lock"></i> 5. Cifrado: nosotros no vemos nada</h2>
+            <p>Los mensajes se cifran en tu teléfono con AES-256. La clave se comparte <strong>solo por QR, en persona</strong>. El servidor solo almacena ciphertexts (basura ilegible). Ni nosotros, ni Firebase, ni ningún empleado con acceso al servidor puede leer lo que mandás.</p>
+            <div class="card-list">
+                <ul>
+                    <li><i class="fas fa-check-circle"></i> Eclips <strong>no tiene acceso</strong> al contenido de tus conversaciones.</li>
+                    <li><i class="fas fa-trash-alt"></i> Si borrás un mensaje, se borra del servidor. No hay copias ocultas.</li>
+                    <li><i class="fas fa-exclamation-triangle"></i> Si perdés la clave, los mensajes se pierden para siempre. No tenemos "recuperación de contraseña" porque no guardamos contraseñas.</li>
+                </ul>
+            </div>
+            <p>En resumen: tus mensajes son tuyos. Nosotros solo pasamos el sobre cerrado.</p>
+        </div>
+
+        <!-- 6. IPs: la parte clave -->
+        <div class="section">
+            <h2><i class="fas fa-network-wired"></i> 6. IPs: por defecto no guardamos, pero...</h2>
+            <p><strong>En condiciones normales, Eclips NO registra direcciones IP de los usuarios.</strong> Nuestra infraestructura está configurada para no almacenar logs de IPs en el día a día. Creemos que tu privacidad es más importante que tener datos que no necesitamos.</p>
+            <div class="card-list">
+                <ul>
+                    <li><i class="fas fa-check-circle"></i> <strong>No guardamos IPs rutinariamente.</strong> Tu dirección IP no queda registrada al usar la app normalmente.</li>
+                    <li><i class="fas fa-gavel"></i> <strong>Excepción 1: requerimiento legal.</strong> Si recibimos una orden judicial válida de una autoridad competente (juez, fiscalía), podemos activar el registro de IPs de una cuenta específica para cumplir con la ley.</li>
+                    <li><i class="fas fa-shield-alt"></i> <strong>Excepción 2: protección urgente.</strong> En casos graves (ataques masivos, amenazas de muerte, extorsión), podemos registrar IPs temporalmente para identificar al responsable y proteger a otros usuarios.</li>
+                </ul>
+            </div>
+            <div class="badge-note">
+                <i class="fas fa-clock" style="color:#ff8c42; margin-right: 0.5rem;"></i>
+                <strong>Transparencia total:</strong> Si alguna vez tenemos que registrar IPs por ley o por protección, lo haremos de forma temporal (máximo 30 días) y solo para la cuenta involucrada. No usamos esas IPs para nada más.
+            </div>
+            <p>¿Por qué este enfoque? Porque preferimos no tener datos que no necesitamos. Pero si la ley nos obliga o alguien está usando Eclips para dañar a otros, tenemos la obligación moral y legal de actuar. Preferimos ser honestos desde el principio.</p>
+        </div>
+
+        <!-- 7. Almacenamiento de datos -->
+        <div class="section">
+            <h2><i class="fas fa-database"></i> 7. Qué guarda el servidor (normalmente)</h2>
+            <div class="card-list">
+                <ul>
+                    <li><i class="fas fa-envelope"></i> <strong>Mensajes cifrados</strong> — los reenviamos tal cual. No podemos leerlos.</li>
+                    <li><i class="fas fa-file"></i> <strong>Archivos cifrados</strong> — se eliminan después de 7 días o cuando todos los destinatarios los descargan.</li>
+                    <li><i class="fas fa-id-card"></i> <strong>ID temporal del dispositivo</strong> — solo para saber a quién entregar el mensaje.</li>
+                    <li><i class="fas fa-ban"></i> <strong>IPs: NO</strong> — a menos que se active una de las excepciones anteriores.</li>
+                </ul>
+            </div>
+        </div>
+
+        <!-- 8. Bots -->
+        <div class="section">
+            <h2><i class="fas fa-robot"></i> 8. Bots y automatizaciones</h2>
+            <p>Podés crear bots que interactúen dentro de Eclips. Los bots están sujetos a las mismas reglas que los humanos: nada ilegal, nada de spam masivo, nada de acoso. Si tu bot rompe las reglas, la cuenta asociada al bot puede ser suspendida.</p>
+            <p>No nos hacemos responsables de lo que hagan los bots de terceros. Usalos bajo tu propio riesgo.</p>
+        </div>
+
+        <!-- 9. Moderación -->
+        <div class="section">
+            <h2><i class="fas fa-user-shield"></i> 9. Moderación: limitada por el cifrado</h2>
+            <p>Como no podemos leer mensajes privados, la moderación se limita a:</p>
+            <div class="card-list">
+                <ul>
+                    <li><i class="fas fa-id-card"></i> Perfiles públicos (nombre de usuario, foto si la hubiera).</li>
+                    <li><i class="fas fa-flag"></i> Reportes manuales de usuarios (si alguien te está jodiendo, reportalo y revisamos logs técnicos).</li>
+                    <li><i class="fas fa-chart-simple"></i> Patrones de abuso evidentes (spam masivo, flooding, etc.).</li>
+                </ul>
+            </div>
+            <p>En casos graves, podemos usar la excepción de IPs para identificar a un acosador recurrente. Es la única herramienta que tenemos para proteger a la comunidad sin violar la privacidad general.</p>
+        </div>
+
+        <!-- 10. Cumplimiento legal -->
+        <div class="section">
+            <h2><i class="fas fa-balance-scale"></i> 10. Cumplimiento legal y autoridades</h2>
+            <p>Eclips colabora con autoridades competentes cuando existe una obligación legal (orden judicial, requerimiento válido). En ese caso, podemos entregar:</p>
+            <ul style="margin-left: 1.8rem; color: #b0b0ba; font-size: 0.9rem;">
+                <li>• Datos de cuenta (identificadores técnicos, fechas de registro).</li>
+                <li>• <strong>IPs registradas durante el período específico que indique la orden</strong> (si la hay).</li>
+                <li>• Ciphertexts de mensajes (que siguen cifrados y son ilegibles sin tu clave).</li>
+            </ul>
+            <p><strong>Lo que no podemos entregar:</strong> mensajes en texto plano, claves privadas, ni ningún contenido descifrado. Por diseño, es técnicamente imposible para nosotros acceder a eso.</p>
+            <div class="badge-note">
+                <i class="fas fa-info-circle" style="color:#ff8c42;"></i>
+                <strong>Sin orden judicial, no entregamos datos.</strong> No respondemos a solicitudes informales de empresas, particulares o gobiernos sin el debido proceso legal.
+            </div>
+        </div>
+
+        <!-- 11. Disponibilidad -->
+        <div class="section">
+            <h2><i class="fas fa-server"></i> 11. El servicio "tal cual"</h2>
+            <p>Eclips se ofrece sin garantías de disponibilidad. Podemos tener caídas, bugs, o decidir cambiar cosas. No prometemos que esté 24/7, aunque hacemos lo posible. Si el servicio se interrumpe, no te vamos a pagar daños y perjuicios (es una app de mensajería, no una central nuclear).</p>
+        </div>
+
+        <!-- 12. Limitación de responsabilidad -->
+        <div class="section">
+            <h2><i class="fas fa-exclamation-triangle"></i> 12. No nos hagas responsables de tus quilombos</h2>
+            <p>No somos responsables por:</p>
+            <div class="card-list">
+                <ul>
+                    <li><i class="fas fa-comment"></i> Lo que digas o hagas usando Eclips.</li>
+                    <li><i class="fas fa-database"></i> Pérdida de datos por borrarlos vos mismo o perder el dispositivo.</li>
+                    <li><i class="fas fa-plug"></i> Caídas del servidor, problemas de internet, o que tu ex se enoje porque le dejaste de hablar.</li>
+                    <li><i class="fas fa-android"></i> Daños indirectos derivados del uso de la app.</li>
+                </ul>
+            </div>
+            <p>Usás Eclips bajo tu propio riesgo. Si necesitás algo crítico, hacé backups por tu cuenta.</p>
+        </div>
+
+        <!-- 13. Terminación -->
+        <div class="section">
+            <h2><i class="fas fa-ban"></i> 13. Cierre de cuenta</h2>
+            <p>Podemos cancelar tu acceso si violás estos términos de forma grave. También podés borrar tu cuenta en cualquier momento desde la app. Al borrarla, se eliminan tus mensajes del servidor y perdés el acceso a conversaciones antiguas.</p>
+        </div>
+
+        <!-- 14. Cambios en los términos -->
+        <div class="section">
+            <h2><i class="fas fa-edit"></i> 14. Podemos cambiar esto</h2>
+            <p>Estos términos pueden actualizarse. Si hay cambios importantes, te avisamos con un cartel en la app o por los canales habituales. Si seguís usando Eclips después del cambio, significa que aceptás la nueva versión. Si no te gusta, borrá la cuenta y listo.</p>
+        </div>
+
+        <!-- 15. Ley aplicable -->
+        <div class="section">
+            <h2><i class="fas fa-gavel"></i> 15. Ley que nos rige</h2>
+            <p>Estos términos se rigen por las leyes de <strong>España</strong> y la normativa europea aplicable. Cualquier disputa se resolverá en los juzgados de Barcelona, a menos que la ley indique otra cosa.</p>
+        </div>
+
+        <hr />
+
+        <div style="text-align: center; margin: 2rem 0 1rem;">
+            <p style="font-size: 0.8rem; color: #8a8a94;">¿Preguntas sobre IPs, privacidad o algo más? <strong style="color:#ff8c42;">legal@eclips.chat</strong> — respondemos humanos, no bots.</p>
+        </div>
+    </div>
+</div>
+
+<footer class="footer">
+    <div class="container">
+        <div>© 2025 Eclips Chat · Cifrado cara a cara · IPs solo por ley o protección</div>
+        <div class="footer-links">
+            <a href="privacy.html">Política de privacidad</a>
+            <a href="terms.html">Términos de Servicio</a>
+            <a href="#">Soporte</a>
+        </div>
+    </div>
+</footer>
+
+<script>
+    // Enlaces placeholder
+    document.querySelectorAll('.footer-links a, .back-link').forEach(link => {
+        if (link.getAttribute('href') === '#') {
+            link.addEventListener('click', (e) => {
+                e.preventDefault();
+                const toast = document.createElement('div');
+                toast.textContent = '📄 Próximamente.';
+                toast.style.position = 'fixed';
+                toast.style.bottom = '20px';
+                toast.style.left = '50%';
+                toast.style.transform = 'translateX(-50%)';
+                toast.style.backgroundColor = '#1e1e22';
+                toast.style.color = '#ff8c42';
+                toast.style.padding = '8px 16px';
+                toast.style.borderRadius = '40px';
+                toast.style.fontSize = '0.75rem';
+                toast.style.zIndex = '999';
+                document.body.appendChild(toast);
+                setTimeout(() => toast.remove(), 1800);
+            });
+        }
+    });
+</script>
+</body>
+</html>

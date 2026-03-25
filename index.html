@@ -1,0 +1,836 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover, user-scalable=yes">
+    <title>Eclips Chat · Mensajería E2EE para Android</title>
+    <meta name="description" content="Eclips Chat: mensajería cifrada extremo a extremo. Claves por QR, sin servidores de claves, privacidad radical. Exclusivo para Android.">
+    <!-- Google Fonts + Font Awesome -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:opsz,wght@14..32,300;14..32,400;14..32,500;14..32,600;14..32,700;14..32,800&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Inter', sans-serif;
+            background: #0A0C10;
+            color: #EFF3F8;
+            line-height: 1.5;
+            scroll-behavior: smooth;
+        }
+
+        ::-webkit-scrollbar {
+            width: 4px;
+        }
+        ::-webkit-scrollbar-track {
+            background: #1E1F24;
+        }
+        ::-webkit-scrollbar-thumb {
+            background: #F97316;
+            border-radius: 8px;
+        }
+
+        .container {
+            max-width: 1280px;
+            margin: 0 auto;
+            padding: 0 1.5rem;
+        }
+
+        /* Header corporativo */
+        .header {
+            padding: 1rem 0;
+            border-bottom: 1px solid rgba(249, 115, 22, 0.2);
+            position: sticky;
+            top: 0;
+            background: rgba(10, 12, 16, 0.98);
+            backdrop-filter: blur(12px);
+            z-index: 1000;
+        }
+
+        .nav {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            flex-wrap: wrap;
+            gap: 1rem;
+        }
+
+        .logo a {
+            font-size: 1.4rem;
+            font-weight: 700;
+            text-decoration: none;
+            color: #fff;
+            letter-spacing: -0.3px;
+        }
+        
+        .logo .gradient-chat {
+            background: linear-gradient(135deg, #FFB347, #F95A2C);
+            background-clip: text;
+            -webkit-background-clip: text;
+            color: transparent;
+            font-weight: 800;
+        }
+
+        .nav-links {
+            display: flex;
+            align-items: center;
+            gap: 1.2rem;
+            flex-wrap: wrap;
+        }
+
+        .nav-links a {
+            color: #B9C1D1;
+            text-decoration: none;
+            font-size: 0.85rem;
+            font-weight: 500;
+            transition: color 0.2s;
+            white-space: nowrap;
+        }
+
+        .nav-links a:hover {
+            color: #F97316;
+        }
+
+        .btn-download-header {
+            background: linear-gradient(105deg, #F97316, #FF8C42);
+            color: #0A0C10;
+            padding: 0.45rem 1.1rem;
+            border-radius: 40px;
+            font-weight: 600;
+            font-size: 0.85rem;
+            display: inline-flex;
+            align-items: center;
+            gap: 0.4rem;
+            transition: all 0.2s;
+        }
+
+        .btn-download-header:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 4px 12px rgba(249, 115, 22, 0.3);
+            color: #0A0C10;
+        }
+
+        /* Hero */
+        .hero {
+            padding: 2.5rem 0 2rem;
+        }
+
+        .hero-content {
+            display: flex;
+            flex-wrap: wrap;
+            align-items: center;
+            justify-content: space-between;
+            gap: 2rem;
+        }
+
+        .hero-text {
+            flex: 1;
+        }
+
+        .hero-text h1 {
+            font-size: 2.5rem;
+            font-weight: 800;
+            letter-spacing: -0.02em;
+            line-height: 1.2;
+            margin-bottom: 0.5rem;
+        }
+
+        .hero-text .tagline {
+            font-size: 1rem;
+            color: #F97316;
+            font-weight: 500;
+            margin-bottom: 0.5rem;
+            letter-spacing: -0.2px;
+        }
+
+        .hero-text p {
+            font-size: 1rem;
+            color: #C9D1D9;
+            margin: 1rem 0 1.5rem;
+            max-width: 520px;
+        }
+
+        .btn-group {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 1rem;
+        }
+
+        .btn {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.6rem;
+            padding: 0.7rem 1.5rem;
+            border-radius: 60px;
+            font-weight: 600;
+            font-size: 0.9rem;
+            transition: all 0.2s ease;
+            cursor: pointer;
+            text-decoration: none;
+            border: none;
+            background: none;
+        }
+
+        .btn-primary {
+            background: linear-gradient(105deg, #F97316, #FF8C42);
+            color: #0A0C10;
+            box-shadow: 0 4px 12px rgba(249, 115, 22, 0.25);
+        }
+
+        .btn-primary:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 8px 20px rgba(249, 115, 22, 0.35);
+        }
+
+        .btn-outline {
+            border: 1.5px solid #F97316;
+            color: #F97316;
+            background: transparent;
+        }
+
+        .btn-outline:hover {
+            background: rgba(249, 115, 22, 0.1);
+            transform: translateY(-2px);
+        }
+
+        /* Terminal */
+        .terminal-simulator {
+            flex: 0.9;
+            min-width: 280px;
+            background: #0A0C10;
+            border-radius: 18px;
+            border: 1px solid #2A2E3A;
+            box-shadow: 0 16px 30px -12px rgba(0,0,0,0.5);
+            overflow: hidden;
+        }
+
+        .terminal-header {
+            background: #1A1D26;
+            padding: 0.6rem 1rem;
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+            border-bottom: 1px solid #2A2E3A;
+        }
+
+        .terminal-dot {
+            width: 11px;
+            height: 11px;
+            border-radius: 50%;
+            background: #FF5F56;
+        }
+        .terminal-dot:nth-child(2) { background: #FFBD2E; }
+        .terminal-dot:nth-child(3) { background: #27C93F; }
+
+        .terminal-title {
+            font-size: 0.7rem;
+            color: #8B95A8;
+            margin-left: 0.5rem;
+            font-family: monospace;
+        }
+
+        .terminal-body {
+            padding: 1rem;
+            background: #0F1117;
+            font-family: 'Monaco', 'Menlo', 'Courier New', monospace;
+            font-size: 0.7rem;
+            max-height: 300px;
+            overflow-y: auto;
+            line-height: 1.45;
+        }
+
+        .terminal-line {
+            margin-bottom: 0.35rem;
+            white-space: pre-wrap;
+            word-break: break-word;
+        }
+
+        .terminal-prompt { color: #4ade80; }
+        .terminal-info { color: #60a5fa; }
+        .terminal-cipher { color: #FFB347; font-family: monospace; font-size: 0.65rem; }
+        .terminal-success { color: #4ade80; }
+        .terminal-warning { color: #fbbf24; }
+        .terminal-output { color: #9CA3AF; }
+
+        .status-badge {
+            display: inline-block;
+            font-size: 0.6rem;
+            padding: 0.15rem 0.45rem;
+            border-radius: 20px;
+            background: rgba(34, 197, 94, 0.15);
+            color: #4ade80;
+            margin-left: 0.6rem;
+        }
+
+        /* Features */
+        .features-section {
+            padding: 2rem 0 2rem;
+        }
+
+        .section-title {
+            text-align: center;
+            margin-bottom: 2rem;
+        }
+
+        .section-title h2 {
+            font-size: 1.8rem;
+            font-weight: 700;
+        }
+
+        .section-title p {
+            color: #A0A8B8;
+            font-size: 0.9rem;
+            max-width: 600px;
+            margin: 0.5rem auto 0;
+        }
+
+        .features-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+            gap: 1.2rem;
+        }
+
+        .feature-card {
+            background: #12141C;
+            border-radius: 20px;
+            padding: 1.3rem;
+            border: 1px solid #252A33;
+            transition: all 0.2s;
+        }
+
+        .feature-card:hover {
+            border-color: #F97316;
+            transform: translateY(-3px);
+        }
+
+        .feature-icon {
+            font-size: 1.8rem;
+            background: linear-gradient(145deg, #F97316, #FFA559);
+            -webkit-background-clip: text;
+            background-clip: text;
+            color: transparent;
+            margin-bottom: 0.8rem;
+        }
+
+        .feature-card h4 {
+            font-size: 1.1rem;
+            font-weight: 600;
+            margin-bottom: 0.5rem;
+        }
+
+        .feature-card p {
+            color: #B0B8C8;
+            font-size: 0.85rem;
+            line-height: 1.45;
+        }
+
+        /* Footer */
+        .footer {
+            border-top: 1px solid rgba(249, 115, 22, 0.2);
+            padding: 1.5rem 0;
+            margin-top: 1rem;
+        }
+
+        .footer-content {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: space-between;
+            align-items: center;
+            gap: 1rem;
+        }
+
+        .footer-links {
+            display: flex;
+            gap: 1.5rem;
+            flex-wrap: wrap;
+        }
+
+        .footer-links a {
+            color: #9a9aa4;
+            text-decoration: none;
+            font-size: 0.75rem;
+            transition: color 0.2s;
+        }
+
+        .footer-links a:hover {
+            color: #F97316;
+        }
+
+        .copyright {
+            font-size: 0.7rem;
+            color: #7F8899;
+        }
+
+        /* Cookie Banner */
+        .cookie-banner {
+            position: fixed;
+            bottom: 0;
+            left: 0;
+            right: 0;
+            background: #12141C;
+            border-top: 1px solid #F97316;
+            padding: 1.2rem 1.5rem;
+            z-index: 1100;
+            transform: translateY(100%);
+            transition: transform 0.4s ease;
+            box-shadow: 0 -8px 25px rgba(0,0,0,0.3);
+        }
+
+        .cookie-banner.show {
+            transform: translateY(0);
+        }
+
+        .cookie-content {
+            max-width: 1280px;
+            margin: 0 auto;
+            display: flex;
+            flex-wrap: wrap;
+            align-items: center;
+            justify-content: space-between;
+            gap: 1rem;
+        }
+
+        .cookie-text {
+            flex: 2;
+            font-size: 0.8rem;
+            color: #C9D1D9;
+            line-height: 1.4;
+        }
+
+        .cookie-text a {
+            color: #F97316;
+            text-decoration: underline;
+        }
+
+        .cookie-buttons {
+            display: flex;
+            gap: 0.8rem;
+            flex-wrap: wrap;
+        }
+
+        .cookie-btn {
+            padding: 0.5rem 1.2rem;
+            border-radius: 40px;
+            font-weight: 500;
+            font-size: 0.8rem;
+            cursor: pointer;
+            transition: all 0.2s;
+            border: none;
+        }
+
+        .cookie-accept {
+            background: linear-gradient(105deg, #F97316, #FF8C42);
+            color: #0A0C10;
+        }
+
+        .cookie-reject {
+            background: transparent;
+            border: 1px solid #F97316;
+            color: #F97316;
+        }
+
+        .cookie-accept:hover, .cookie-reject:hover {
+            transform: translateY(-2px);
+        }
+
+        /* Responsive */
+        @media (max-width: 780px) {
+            .container {
+                padding: 0 1.2rem;
+            }
+            .nav {
+                flex-direction: column;
+                align-items: stretch;
+            }
+            .nav-links {
+                justify-content: space-between;
+                gap: 0.8rem;
+            }
+            .nav-links a {
+                font-size: 0.75rem;
+            }
+            .btn-download-header {
+                padding: 0.35rem 0.9rem;
+                font-size: 0.75rem;
+            }
+            .hero-text h1 {
+                font-size: 1.8rem;
+            }
+            .hero-content {
+                flex-direction: column;
+            }
+            .btn-group {
+                justify-content: center;
+            }
+            .section-title h2 {
+                font-size: 1.5rem;
+            }
+            .footer-content {
+                flex-direction: column;
+                text-align: center;
+            }
+            .cookie-content {
+                flex-direction: column;
+                text-align: center;
+            }
+            .cookie-buttons {
+                justify-content: center;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .nav-links {
+                flex-wrap: wrap;
+                justify-content: center;
+            }
+            .hero-text h1 {
+                font-size: 1.6rem;
+            }
+        }
+    </style>
+</head>
+<body>
+
+<header class="header">
+    <div class="container">
+        <div class="nav">
+            <div class="logo">
+                <a href="index.html">Eclips <span class="gradient-chat">Chat</span></a>
+            </div>
+            <div class="nav-links">
+                <a href="versions.html">Descargas</a>
+                <a href="#">Soporte</a>
+                <a href="privacy.html">Privacidad</a>
+                <a href="terms.html">Términos</a>
+                <a href="#" class="btn-download-header" id="headerDownloadBtn">
+                    <i class="fab fa-android"></i> Descargar
+                </a>
+            </div>
+        </div>
+    </div>
+</header>
+
+<main>
+    <div class="container">
+        <div class="hero">
+            <div class="hero-content">
+                <div class="hero-text">
+                    <div class="tagline"><i class="fas fa-shield-alt" style="color:#F97316;"></i> Cifrado cara a cara</div>
+                    <h1>Eclips <span class="gradient-chat">Chat</span></h1>
+                    <p>Mensajería con cifrado AES-256. Las claves se comparten <strong>por QR en persona</strong>. El servidor solo ve datos cifrados. Nadie más puede leer tus conversaciones.</p>
+                    <div class="btn-group">
+                        <a href="#" class="btn btn-primary" id="heroDownloadBtn"><i class="fab fa-android"></i> Descargar APK</a>
+                        <a href="versions.html" class="btn btn-outline"><i class="fas fa-download"></i> Versiones</a>
+                    </div>
+                </div>
+
+                <div class="terminal-simulator">
+                    <div class="terminal-header">
+                        <div class="terminal-dot"></div>
+                        <div class="terminal-dot"></div>
+                        <div class="terminal-dot"></div>
+                        <span class="terminal-title">eclips-server | relay seguro</span>
+                        <span class="status-badge"><i class="fas fa-circle" style="font-size: 0.45rem;"></i> ACTIVE</span>
+                    </div>
+                    <div class="terminal-body" id="terminalBody">
+                        <div class="terminal-line">
+                            <span class="terminal-prompt">[SERVER]</span>
+                            <span class="terminal-output"> WebSocket relay · cifrado E2EE activo</span>
+                        </div>
+                        <div class="terminal-line">
+                            <span class="terminal-prompt">[INFO]</span>
+                            <span class="terminal-output"> Los mensajes se reenvían sin descifrar</span>
+                        </div>
+                        <div class="terminal-line">
+                            <span class="terminal-prompt">[WS]</span>
+                            <span class="terminal-output"> Usuario "Alex" conectado</span>
+                        </div>
+                        <div class="terminal-line">
+                            <span class="terminal-prompt">[WS]</span>
+                            <span class="terminal-output"> Usuario "Sam" conectado</span>
+                        </div>
+                        <div id="dynamicLogs"></div>
+                    </div>
+                    <div style="padding: 0.5rem 1rem; background: #0F1117; border-top: 1px solid #1E2129; font-size: 0.6rem; color: #6A7287; text-align: center;">
+                        <i class="fas fa-lock"></i> El servidor solo reenvía ciphertexts · Claves locales
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="features-section">
+            <div class="section-title">
+                <h2>Privacidad radical, sin compromisos</h2>
+                <p>Eclips está diseñado para que solo tú y tu contacto tengan acceso a los mensajes.</p>
+            </div>
+            <div class="features-grid">
+                <div class="feature-card">
+                    <div class="feature-icon"><i class="fas fa-qrcode"></i></div>
+                    <h4>Claves por QR</h4>
+                    <p>Compartí la clave escaneando un código en persona. Nunca viaja por internet.</p>
+                </div>
+                <div class="feature-card">
+                    <div class="feature-icon"><i class="fas fa-key"></i></div>
+                    <h4>AES-256</h4>
+                    <p>Cifrado militar. Cada conversación tiene su propia clave local.</p>
+                </div>
+                <div class="feature-card">
+                    <div class="feature-icon"><i class="fas fa-eye-slash"></i></div>
+                    <h4>Cero acceso</h4>
+                    <p>Ni el servidor ni Firebase pueden leer tus mensajes. Solo cifrado.</p>
+                </div>
+                <div class="feature-card">
+                    <div class="feature-icon"><i class="fab fa-android"></i></div>
+                    <h4>Exclusivo Android</h4>
+                    <p>Optimizado para Material You, sin dependencias de Google Play Services.</p>
+                </div>
+            </div>
+        </div>
+    </div>
+</main>
+
+<footer class="footer">
+    <div class="container">
+        <div class="footer-content">
+            <div class="copyright">
+                <i class="far fa-copyright"></i> 2025 Eclips Chat · Cifrado AES-256 · Claves por QR
+            </div>
+            <div class="footer-links">
+                <a href="privacy.html">Política de Privacidad</a>
+                <a href="terms.html">Términos de Servicio</a>
+                <a href="versions.html">Descargas</a>
+                <a href="#">Soporte</a>
+                <a href="#" id="openCookieSettings">Preferencias de cookies</a>
+            </div>
+        </div>
+    </div>
+</footer>
+
+<!-- Cookie Banner -->
+<div class="cookie-banner" id="cookieBanner">
+    <div class="cookie-content">
+        <div class="cookie-text">
+            <i class="fas fa-cookie-bite" style="color:#F97316; margin-right: 0.5rem;"></i>
+            Usamos cookies técnicas necesarias para el funcionamiento del sitio. No usamos cookies de seguimiento ni publicitarias.
+            <a href="#" id="cookieMoreInfo">Más información</a>
+        </div>
+        <div class="cookie-buttons">
+            <button class="cookie-btn cookie-reject" id="rejectCookies">Rechazar</button>
+            <button class="cookie-btn cookie-accept" id="acceptCookies">Aceptar</button>
+        </div>
+    </div>
+</div>
+
+<script>
+    // Gestión de cookies
+    const COOKIE_CONSENT_KEY = 'eclips_cookie_consent';
+    
+    function getCookieConsent() {
+        return localStorage.getItem(COOKIE_CONSENT_KEY);
+    }
+    
+    function setCookieConsent(choice) {
+        localStorage.setItem(COOKIE_CONSENT_KEY, choice);
+        hideCookieBanner();
+        if (choice === 'accepted') {
+            console.log('Cookies técnicas aceptadas');
+            // Aquí se podrían inicializar servicios que requieran consentimiento
+            // En Eclips solo hay cookies técnicas, así que no hay más acciones
+        } else {
+            console.log('Cookies rechazadas, solo funcionan las técnicas esenciales');
+        }
+    }
+    
+    function hideCookieBanner() {
+        const banner = document.getElementById('cookieBanner');
+        banner.classList.remove('show');
+        setTimeout(() => {
+            banner.style.display = 'none';
+        }, 400);
+    }
+    
+    function showCookieBanner() {
+        const banner = document.getElementById('cookieBanner');
+        banner.style.display = 'block';
+        setTimeout(() => {
+            banner.classList.add('show');
+        }, 100);
+    }
+    
+    // Inicializar
+    function initCookieBanner() {
+        const consent = getCookieConsent();
+        if (!consent) {
+            showCookieBanner();
+        } else {
+            hideCookieBanner();
+        }
+    }
+    
+    // Eventos
+    document.getElementById('acceptCookies').addEventListener('click', () => {
+        setCookieConsent('accepted');
+    });
+    
+    document.getElementById('rejectCookies').addEventListener('click', () => {
+        setCookieConsent('rejected');
+    });
+    
+    document.getElementById('openCookieSettings').addEventListener('click', (e) => {
+        e.preventDefault();
+        const consent = getCookieConsent();
+        const toast = document.createElement('div');
+        if (consent === 'accepted') {
+            toast.textContent = '🍪 Has aceptado las cookies técnicas. Puedes cambiar tu preferencia en cualquier momento.';
+        } else if (consent === 'rejected') {
+            toast.textContent = '🍪 Has rechazado las cookies no esenciales. Solo funcionan las técnicas necesarias.';
+        } else {
+            toast.textContent = '🍪 No has dado tu consentimiento aún. Puedes aceptar o rechazar en el banner.';
+            showCookieBanner();
+        }
+        toast.style.position = 'fixed';
+        toast.style.bottom = '80px';
+        toast.style.left = '50%';
+        toast.style.transform = 'translateX(-50%)';
+        toast.style.backgroundColor = '#2A2E3A';
+        toast.style.color = '#fff';
+        toast.style.padding = '8px 18px';
+        toast.style.borderRadius = '40px';
+        toast.style.fontSize = '0.75rem';
+        toast.style.zIndex = '10000';
+        document.body.appendChild(toast);
+        setTimeout(() => toast.remove(), 3000);
+    });
+    
+    document.getElementById('cookieMoreInfo').addEventListener('click', (e) => {
+        e.preventDefault();
+        const toast = document.createElement('div');
+        toast.innerHTML = '📄 Eclips solo usa cookies técnicas esenciales para el funcionamiento. No rastreamos tu actividad.';
+        toast.style.position = 'fixed';
+        toast.style.bottom = '80px';
+        toast.style.left = '50%';
+        toast.style.transform = 'translateX(-50%)';
+        toast.style.backgroundColor = '#F97316';
+        toast.style.color = '#0A0C10';
+        toast.style.padding = '10px 20px';
+        toast.style.borderRadius = '40px';
+        toast.style.fontSize = '0.75rem';
+        toast.style.fontWeight = '500';
+        toast.style.zIndex = '10000';
+        toast.style.maxWidth = '90%';
+        toast.style.textAlign = 'center';
+        document.body.appendChild(toast);
+        setTimeout(() => toast.remove(), 3500);
+    });
+    
+    // Simulación de servidor WebSocket
+    const dynamicLogs = document.getElementById('dynamicLogs');
+    
+    function generateCiphertext() {
+        const chars = '0123456789abcdef';
+        let cipher = '';
+        for (let i = 0; i < 48; i++) cipher += chars[Math.floor(Math.random() * chars.length)];
+        return `aes-256-gcm:${cipher}${Date.now().toString(16).slice(-8)}`;
+    }
+    
+    function addLogLine(htmlContent, scroll = true) {
+        const logDiv = document.createElement('div');
+        logDiv.className = 'terminal-line';
+        logDiv.innerHTML = htmlContent;
+        dynamicLogs.appendChild(logDiv);
+        if (scroll) {
+            const terminalBody = document.getElementById('terminalBody');
+            terminalBody.scrollTop = terminalBody.scrollHeight;
+        }
+    }
+    
+    function simulateIncomingMessage(sender, recipient) {
+        const ciphertext = generateCiphertext();
+        addLogLine(`<span class="terminal-prompt">[WS→]</span> <span class="terminal-info">${sender} → ${recipient}</span>`);
+        addLogLine(`<span class="terminal-prompt">[DATA]</span> <span class="terminal-cipher">cipher: ${ciphertext.substring(0, 42)}...</span>`);
+        addLogLine(`<span class="terminal-prompt">[INFO]</span> <span class="terminal-output">Reenviando (servidor no descifra)</span>`);
+        setTimeout(() => {
+            addLogLine(`<span class="terminal-prompt">[WS←]</span> <span class="terminal-success">Entregado a ${recipient}</span>`);
+        }, 150);
+    }
+    
+    function simulateUserConnection(username) {
+        addLogLine(`<span class="terminal-prompt">[WS]</span> <span class="terminal-success">${username} conectado · E2EE ready</span>`);
+    }
+    
+    function startSimulation() {
+        setTimeout(() => {
+            addLogLine(`<span class="terminal-prompt">[SYSTEM]</span> <span class="terminal-success">Relay seguro iniciado</span>`);
+        }, 500);
+        setTimeout(() => simulateUserConnection('Elena'), 1000);
+        setTimeout(() => simulateUserConnection('Carlos'), 1800);
+        
+        const users = ['Alex', 'Sam', 'Maria', 'Elena', 'Carlos'];
+        setInterval(() => {
+            const sender = users[Math.floor(Math.random() * users.length)];
+            let recipient = users[Math.floor(Math.random() * users.length)];
+            while (recipient === sender) recipient = users[Math.floor(Math.random() * users.length)];
+            simulateIncomingMessage(sender, recipient);
+        }, 4800);
+    }
+    
+    // Botones de descarga
+    const downloadBtns = document.querySelectorAll('#heroDownloadBtn, #headerDownloadBtn');
+    downloadBtns.forEach(btn => {
+        btn.addEventListener('click', (e) => {
+            e.preventDefault();
+            const toast = document.createElement('div');
+            toast.textContent = '📱 Descarga disponible en Google Play próximamente';
+            toast.style.position = 'fixed';
+            toast.style.bottom = '20px';
+            toast.style.left = '50%';
+            toast.style.transform = 'translateX(-50%)';
+            toast.style.backgroundColor = '#F97316';
+            toast.style.color = '#0A0C10';
+            toast.style.padding = '10px 20px';
+            toast.style.borderRadius = '40px';
+            toast.style.fontWeight = '500';
+            toast.style.fontSize = '0.8rem';
+            toast.style.zIndex = '10000';
+            toast.style.backdropFilter = 'blur(8px)';
+            document.body.appendChild(toast);
+            setTimeout(() => toast.remove(), 2000);
+        });
+    });
+    
+    // Footer links
+    document.querySelectorAll('.footer-links a').forEach(link => {
+        if (link.getAttribute('href') === '#') {
+            link.addEventListener('click', (e) => {
+                e.preventDefault();
+                const toast = document.createElement('div');
+                toast.textContent = '📄 Próximamente disponible';
+                toast.style.position = 'fixed';
+                toast.style.bottom = '20px';
+                toast.style.left = '50%';
+                toast.style.transform = 'translateX(-50%)';
+                toast.style.backgroundColor = '#2A2E3A';
+                toast.style.color = '#fff';
+                toast.style.padding = '6px 16px';
+                toast.style.borderRadius = '40px';
+                toast.style.fontSize = '0.7rem';
+                toast.style.zIndex = '10000';
+                document.body.appendChild(toast);
+                setTimeout(() => toast.remove(), 1800);
+            });
+        }
+    });
+    
+    window.addEventListener('load', () => {
+        startSimulation();
+        initCookieBanner();
+    });
+</script>
+</body>
+</html>
