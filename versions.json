@@ -1,5 +1,13 @@
 [
     {
+        "version": "2.0.1.rc1-pre",
+        "status": "preview",
+        "asset_url": "https://github.com/Eclips-Fundation/www/releases/download/2.0.1.rc1-pre/eclips-2.0.1.rc1-pre.apk",
+        "support_type": "supported",
+        "size_mb": 98.5,
+        "release_date": "2026-03-26"
+    },
+    {
         "version":"2.0.0-beta",
         "status": "beta",
         "asset_url": "https://github.com/Eclips-Fundation/www/releases/download/2.0.0-beta/app-release.apk",
