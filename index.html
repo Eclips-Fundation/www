@@ -172,7 +172,122 @@
             transform: translateY(-2px);
         }
 
-        /* Características destacadas */
+        /* Modal de advertencia */
+        .warning-modal {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: rgba(0, 0, 0, 0.8);
+            backdrop-filter: blur(8px);
+            z-index: 2000;
+            align-items: center;
+            justify-content: center;
+            padding: 1rem;
+        }
+
+        .warning-modal.show {
+            display: flex;
+        }
+
+        .modal-content {
+            background: #12141C;
+            border-radius: 28px;
+            max-width: 450px;
+            width: 100%;
+            padding: 1.8rem;
+            border: 1px solid #F97316;
+            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.5);
+            animation: modalSlideIn 0.3s ease;
+        }
+
+        @keyframes modalSlideIn {
+            from {
+                opacity: 0;
+                transform: translateY(-20px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        .modal-icon {
+            font-size: 3rem;
+            text-align: center;
+            margin-bottom: 1rem;
+        }
+
+        .modal-icon i {
+            color: #fbbf24;
+        }
+
+        .modal-title {
+            font-size: 1.3rem;
+            font-weight: 700;
+            text-align: center;
+            margin-bottom: 1rem;
+            color: #fbbf24;
+        }
+
+        .modal-message {
+            font-size: 0.9rem;
+            color: #C9D1D9;
+            text-align: center;
+            margin-bottom: 1.5rem;
+            line-height: 1.5;
+        }
+
+        .modal-version-badge {
+            background: rgba(249, 115, 22, 0.15);
+            padding: 0.3rem 0.8rem;
+            border-radius: 40px;
+            font-size: 0.75rem;
+            display: inline-block;
+            margin: 0 auto 1rem;
+            text-align: center;
+            width: fit-content;
+        }
+
+        .modal-buttons {
+            display: flex;
+            gap: 1rem;
+            justify-content: center;
+        }
+
+        .modal-btn {
+            padding: 0.6rem 1.2rem;
+            border-radius: 40px;
+            font-weight: 600;
+            font-size: 0.85rem;
+            cursor: pointer;
+            border: none;
+            transition: all 0.2s;
+        }
+
+        .modal-btn-cancel {
+            background: transparent;
+            border: 1px solid #F97316;
+            color: #F97316;
+        }
+
+        .modal-btn-cancel:hover {
+            background: rgba(249, 115, 22, 0.1);
+        }
+
+        .modal-btn-confirm {
+            background: linear-gradient(105deg, #F97316, #FF8C42);
+            color: #0A0C10;
+        }
+
+        .modal-btn-confirm:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 4px 12px rgba(249, 115, 22, 0.3);
+        }
+
+        /* Features */
         .features-section {
             padding: 2rem 0 2.5rem;
         }
@@ -380,6 +495,10 @@
                 flex-direction: column;
                 text-align: center;
             }
+            .modal-content {
+                margin: 0 1rem;
+                padding: 1.5rem;
+            }
         }
 
         @media (max-width: 480px) {
@@ -494,7 +613,68 @@
     </div>
 </div>
 
+<!-- Modal de advertencia para versiones no estables -->
+<div class="warning-modal" id="warningModal">
+    <div class="modal-content">
+        <div class="modal-icon">
+            <i class="fas fa-exclamation-triangle"></i>
+        </div>
+        <div class="modal-title">Versión no estable</div>
+        <div class="modal-message" id="modalMessage">
+            La versión que estás a punto de descargar no es una versión estable de producción.
+        </div>
+        <div style="text-align: center;">
+            <span class="modal-version-badge" id="modalVersionBadge">Preview</span>
+        </div>
+        <div class="modal-message" style="font-size: 0.8rem; margin-top: 0.5rem;">
+            Puede contener errores, funciones experimentales o comportamientos inesperados.
+        </div>
+        <div class="modal-buttons">
+            <button class="modal-btn modal-btn-cancel" id="cancelDownload">Cancelar</button>
+            <button class="modal-btn modal-btn-confirm" id="confirmDownload">Continuar igual</button>
+        </div>
+    </div>
+</div>
+
 <script>
+    // ============================================================
+    // VERSIÓN DE DEMOSTRACIÓN (si no existe versions.json)
+    // ============================================================
+    const DEMO_VERSIONS = [
+        {
+            "version": "3.2.0",
+            "status": "release",
+            "asset_url": "https://github.com/eclips-chat/eclips-android/releases/download/v3.2.0/eclips-chat-3.2.0.apk",
+            "release_date": "2025-02-28",
+            "size_mb": 28.4,
+            "support_type": "supported"
+        },
+        {
+            "version": "4.0.0-preview.2",
+            "status": "preview",
+            "asset_url": "https://github.com/eclips-chat/eclips-android/releases/download/v4.0.0-preview.2/eclips-chat-4.0.0-preview.2.apk",
+            "release_date": "2025-03-01",
+            "size_mb": 31.2,
+            "support_type": "supported"
+        },
+        {
+            "version": "3.3.0-beta.4",
+            "status": "beta",
+            "asset_url": "https://github.com/eclips-chat/eclips-android/releases/download/v3.3.0-beta.4/eclips-chat-3.3.0-beta.4.apk",
+            "release_date": "2025-02-25",
+            "size_mb": 29.1,
+            "support_type": "supported"
+        },
+        {
+            "version": "4.0.0-alpha.5",
+            "status": "alpha",
+            "asset_url": "https://github.com/eclips-chat/eclips-android/releases/download/v4.0.0-alpha.5/eclips-chat-4.0.0-alpha.5.apk",
+            "release_date": "2025-02-20",
+            "size_mb": 27.3,
+            "support_type": "missing_features"
+        }
+    ];
+
     // ============================================================
     // MENÚ HAMBURGUESA
     // ============================================================
@@ -527,11 +707,27 @@
     });
 
     // ============================================================
-    // FUNCIONALIDAD DE DESCARGA - Obtiene última versión de versions.json
+    // FUNCIONALIDAD DE DESCARGA CON ADVERTENCIA
     // ============================================================
     const VERSIONS_JSON_URL = './versions.json';
-    let latestVersionUrl = null;
-    let latestVersionNumber = null;
+    let latestVersionInfo = null;
+    let usingDemo = false;
+    let pendingDownloadUrl = null;
+    let pendingVersionInfo = null;
+
+    // Mapeo de estados a nombres en español
+    const statusNames = {
+        'release': 'Release (estable)',
+        'preview': 'Preview (pre-lanzamiento)',
+        'beta': 'Beta (pruebas)',
+        'alpha': 'Alpha (experimental)'
+    };
+
+    const statusDescriptions = {
+        'preview': 'Esta es una versión de previsualización. Incluye nuevas funcionalidades que aún están en fase de prueba.',
+        'beta': 'Esta es una versión beta. Puede contener errores y características inestables.',
+        'alpha': 'Esta es una versión alpha, altamente experimental. No recomendada para uso diario.'
+    };
 
     async function fetchLatestVersion() {
         try {
@@ -540,23 +736,54 @@
                 headers: { 'Accept': 'application/json' },
                 cache: 'no-cache'
             });
-            if (!response.ok) throw new Error(`HTTP ${response.status}`);
-            const data = await response.json();
-            if (!Array.isArray(data) || data.length === 0) throw new Error('No hay versiones');
             
-            const releaseVersions = data.filter(v => v.status === 'release' && v.asset_url);
-            const sorted = releaseVersions.sort((a, b) => b.version.localeCompare(a.version, undefined, { numeric: true }));
+            if (!response.ok) {
+                console.log('No se encontró versions.json, usando versión de demostración');
+                useDemoVersions();
+                return;
+            }
+            
+            const data = await response.json();
+            
+            if (!Array.isArray(data) || data.length === 0) {
+                console.log('versions.json vacío, usando versión de demostración');
+                useDemoVersions();
+                return;
+            }
+            
+            // Buscar la versión más reciente (por fecha o por versión)
+            const sorted = [...data].sort((a, b) => {
+                if (a.release_date && b.release_date) {
+                    return new Date(b.release_date) - new Date(a.release_date);
+                }
+                return b.version.localeCompare(a.version, undefined, { numeric: true });
+            });
             
             if (sorted.length > 0) {
-                latestVersionUrl = sorted[0].asset_url;
-                latestVersionNumber = sorted[0].version;
-                return true;
+                latestVersionInfo = sorted[0];
+                console.log(`✅ Última versión: ${latestVersionInfo.version} (${latestVersionInfo.status})`);
+                return;
             }
-            return false;
+            
+            useDemoVersions();
+            
         } catch (error) {
             console.error('Error cargando versions.json:', error);
-            return false;
+            useDemoVersions();
         }
+    }
+    
+    function useDemoVersions() {
+        usingDemo = true;
+        // Ordenar demo versions
+        const sorted = [...DEMO_VERSIONS].sort((a, b) => {
+            if (a.release_date && b.release_date) {
+                return new Date(b.release_date) - new Date(a.release_date);
+            }
+            return b.version.localeCompare(a.version, undefined, { numeric: true });
+        });
+        latestVersionInfo = sorted[0];
+        console.log(`📱 Usando versión de demostración: ${latestVersionInfo.version} (${latestVersionInfo.status})`);
     }
 
     function showToast(message, isError = false) {
@@ -583,19 +810,58 @@
         setTimeout(() => toast.remove(), 3000);
     }
 
+    function showWarningModal(versionInfo, downloadUrl) {
+        pendingDownloadUrl = downloadUrl;
+        pendingVersionInfo = versionInfo;
+        
+        const modal = document.getElementById('warningModal');
+        const modalMessage = document.getElementById('modalMessage');
+        const modalVersionBadge = document.getElementById('modalVersionBadge');
+        
+        const statusName = statusNames[versionInfo.status] || versionInfo.status;
+        const statusDesc = statusDescriptions[versionInfo.status] || 'Esta versión no es estable y puede contener errores.';
+        
+        modalMessage.innerHTML = `La versión <strong>${versionInfo.version}</strong> que estás a punto de descargar está clasificada como <strong>${statusName}</strong>.<br><br>${statusDesc}`;
+        modalVersionBadge.innerHTML = `<i class="fas fa-code-branch"></i> ${statusName} · v${versionInfo.version}`;
+        
+        modal.classList.add('show');
+    }
+    
+    function hideWarningModal() {
+        const modal = document.getElementById('warningModal');
+        modal.classList.remove('show');
+        pendingDownloadUrl = null;
+        pendingVersionInfo = null;
+    }
+    
+    function proceedWithDownload() {
+        if (pendingDownloadUrl) {
+            const version = pendingVersionInfo?.version || '';
+            const status = pendingVersionInfo?.status || 'desconocido';
+            showToast(`📱 Descargando Eclips Chat ${version} (${status})`);
+            window.open(pendingDownloadUrl, '_blank');
+        }
+        hideWarningModal();
+    }
+    
     async function handleDownload() {
-        if (latestVersionUrl) {
-            showToast(`📱 Descargando Eclips Chat ${latestVersionNumber || ''}`);
-            window.open(latestVersionUrl, '_blank');
+        if (!latestVersionInfo) {
+            showToast('🔍 Buscando última versión...');
+            await fetchLatestVersion();
+        }
+        
+        if (!latestVersionInfo || !latestVersionInfo.asset_url) {
+            showToast('⚠️ No hay versiones disponibles para descargar', true);
             return;
         }
-        showToast('🔍 Buscando última versión...');
-        const success = await fetchLatestVersion();
-        if (success && latestVersionUrl) {
-            showToast(`📱 Descargando Eclips Chat ${latestVersionNumber || ''}`);
-            window.open(latestVersionUrl, '_blank');
+        
+        // Si es release, descargar directamente sin advertencia
+        if (latestVersionInfo.status === 'release') {
+            showToast(`📱 Descargando Eclips Chat ${latestVersionInfo.version}`);
+            window.open(latestVersionInfo.asset_url, '_blank');
         } else {
-            showToast('⚠️ Próximamente en Google Play', true);
+            // Si es preview, beta o alpha, mostrar advertencia
+            showWarningModal(latestVersionInfo, latestVersionInfo.asset_url);
         }
     }
 
@@ -615,7 +881,27 @@
     // ============================================================
     const downloadBtn = document.getElementById('heroDownloadBtn');
     if (downloadBtn) {
-        downloadBtn.addEventListener('click', (e) => { e.preventDefault(); handleDownload(); });
+        downloadBtn.addEventListener('click', (e) => { 
+            e.preventDefault(); 
+            handleDownload(); 
+        });
+    }
+    
+    // Modal events
+    const cancelBtn = document.getElementById('cancelDownload');
+    const confirmBtn = document.getElementById('confirmDownload');
+    
+    if (cancelBtn) cancelBtn.addEventListener('click', hideWarningModal);
+    if (confirmBtn) confirmBtn.addEventListener('click', proceedWithDownload);
+    
+    // Cerrar modal al hacer clic fuera
+    const modal = document.getElementById('warningModal');
+    if (modal) {
+        modal.addEventListener('click', (e) => {
+            if (e.target === modal) {
+                hideWarningModal();
+            }
+        });
     }
     
     const acceptBtn = document.getElementById('acceptCookies');
