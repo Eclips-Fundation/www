@@ -1,9 +1,16 @@
 [
     {
+        "version": "2.0.1.rc2-pre",
+        "status": "preview",
+        "asset_url": "https://github.com/Eclips-Fundation/www/releases/download/2.0.1.rc2-pre/eclips-2.0.1.rc2.apk",
+        "size_mb": 103.2,
+        "release_date": "2026-03-27"
+    },
+    {
         "version": "2.0.1.rc1-pre",
         "status": "preview",
         "asset_url": "https://github.com/Eclips-Fundation/www/releases/download/2.0.1.rc1-pre/eclips-2.0.1.rc1.apk",
-        "support_type": "supported",
+        "support_type": "missing_features",
         "size_mb": 98.5,
         "release_date": "2026-03-26"
     },
@@ -11,7 +18,7 @@
         "version":"2.0.0-beta",
         "status": "beta",
         "asset_url": "https://github.com/Eclips-Fundation/www/releases/download/2.0.0-beta/app-release.apk",
-        "support_type": "supported",
+        "support_type": "missing_features",
         "size_mb": 100.5,
         "release_date": "2026-03-25"
     },
